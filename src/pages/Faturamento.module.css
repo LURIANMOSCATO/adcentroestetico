@@ -1,0 +1,304 @@
+.container {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    height: 100vh;
+    background: rgba(175, 102, 217, 0.5);
+}
+
+.cards{
+    margin-top: 5px;
+    height: 35vh;
+    width: 150vh;
+    border-radius: 5px;
+    display: flex;
+  }
+
+  .values {
+    box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.2);
+    border: 1px solid rgba(182, 182, 182, 0.3);
+    height: 80%;
+    width: 80%;
+    margin: auto 10px;
+    border-radius: 6px;
+    border-left: 1vh solid rgba(13, 88, 6, 0.8);
+    background: #fff;
+
+  }
+
+  .values:nth-child(2){
+    border-left: 1vh solid rgba(234, 0, 255, 0.8);
+  }
+
+  .content {
+    display: grid;
+    margin-top:1px;
+  }
+
+  .title{
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(84, 87, 87);
+    float: left;
+    margin: 10px;
+    text-transform: capitalize;
+  }
+
+  .content svg {
+    float: right;
+    margin-right: 10px;
+    top: 10%;
+    font-size: 10px;
+    color: rgb(38, 109, 6);
+    height: 5vh;
+    width: 5vh;
+  }
+
+  .values_money{
+    color: rgba(33, 36, 36, 0.705);
+    font-size: 6vh;
+    font-weight: 600;
+  }
+
+  .days_count{
+    display: grid;
+    color: red;
+    margin-left: 5px;
+    text-align: left;
+    
+  }
+
+  .days_count .days_val{
+    height: 20px;
+    width: 20vh;
+    margin-top: 5px;
+    margin-left: 5px;
+    color: #252121;
+    border-bottom: 1px solid gray;
+    border-radius: 0;
+    display: flex;
+    padding: 5px 5px;
+  }
+
+  .listagem{
+    height: 60vh;
+    width: 150vh;
+    background: #fff;
+    box-shadow: 0px 6px 10px 2px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+
+  /*tabs listagem*/
+
+
+  .tab {
+    list-style-type: none;
+    width: 40vh;
+    margin-top: 10px;
+    margin: 0px auto;
+    margin-left: 50px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    font-weight:300;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-align: left;
+    display: grid;
+}
+
+.tab  .description_list{
+    color: rgba(128, 128, 128, 0.7);
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 2px;
+    margin-left: 10px;
+}
+
+.tab:focus{
+    outline: none;
+}
+
+.tabList{
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 6px 10px 2px rgba(0,0,0,0.2);
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid rgba(109, 106, 106, 0.774);
+}
+
+ .active{
+  color: #525151;
+  font-weight: 600;
+  border-bottom: 3px solid rgb(144, 7, 224);
+  border-radius: 3px;
+  box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.5);
+  margin: 5px auto;
+  padding: 5px 10px;
+
+}
+
+.tabPanel{
+    align-items: center;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.content_panel{
+    align-items: center;
+    justify-content: center;
+}
+
+.content_panel .contents{
+    align-content: center;
+    align-items: center;
+}
+.contentst{
+    display: grid;
+    align-items: center;
+    text-align: left;
+    
+
+}
+.list {
+    margin: 0 auto;
+}
+
+.desc_list{
+    display: flex;
+}
+
+.desc_list svg {
+    margin: 5px;
+    align-items: center;
+    font-size: 35px;
+    border-radius: 50%;
+    color: rgb(85, 81, 81);
+}
+
+.desc_cont{
+    display: grid;
+}
+
+.desc_cont span{
+  font-weight: 600;
+  
+}
+
+.desc_cont .description_list {
+    float: left;
+    margin-left: 1px;
+}
+
+  /*tabs listagem*/
+  
+  .tablePanel thead tr th{
+    color: rgb(153, 0, 255);
+    font-weight: 300;
+    height: 10px;
+    background: #fff;
+    border-bottom: 1px solid rgb(153, 140, 140);
+    border-collapse: collapse;
+    white-space: nowrap;
+  }
+
+  .tablePanel tbody tr{
+    height: 10px;
+    font-size: 15px;
+  }
+
+  .tablePanel tbody tr td{
+    white-space: nowrap;
+    border-collapse: collapse;
+  }
+
+
+.products_title{
+  margin-top: 5px;
+  margin: auto;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(188, 74, 223, 0.7);
+}
+
+.products_title svg {
+  font-size: 20px;
+}
+
+.product_content .qtd{
+  margin-left: 2px;
+}
+
+.product_card{
+    border: 1px solid rgba(180, 177, 177, 0.5);
+    height: 22vh;
+    width: 20vh;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que as divs quebrem para a próxima linha */
+    justify-content: flex-start; /* Alinha as divs à esquerda */
+}
+
+.cards2{
+  display: flex;
+  flex-wrap: wrap; /* Permite que as divs quebrem para a próxima linha */
+  justify-content: flex-start; /* Alinha as divs à esquerda */
+  overflow-x: scroll;
+  height: 50vh;
+}
+
+.product_card:hover{
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.29);
+    background: #fff;
+}
+
+.product_content {
+    display: grid;
+    height: 100%;
+}
+
+.product_content .total_money {
+    font-weight: 600;
+    font-size: 12px;
+    font-family: 'Poppins';
+    color: #000;
+    height: 30px;
+    width: auto;
+    border-radius: 5px;
+    margin:auto;
+    margin-bottom: 2px;
+}
+
+.product_content span svg {
+    color: purple;
+    text-shadow: 4px 2px 10px 0px red;
+}
+
+.product_content p {
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.product_content p svg {
+  color: rgb(159, 159, 165);
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.product_content .register_sell{
+  margin:  5px auto;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  background: rgba(177, 176, 176, 0.19);
+  border-radius: 5px;
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.register_sell p {
+  color: #000;
+  font-size: 12px;
+  padding: 1px 2px;
+}

@@ -1,0 +1,239 @@
+*{  
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.container{
+    display: flex;
+    height: 90vh;
+    width: 90%;
+    margin: 10px auto;
+    margin-right: 50px;
+}
+
+.button_open{
+    border: none;
+    float: right;
+    box-shadow: 0px 1px 15px -5px rgba(0, 0, 0, 0.5);
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 7%;
+    right: 3%;
+    text-align:center;
+    font-size: 5vh;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    color: white;
+    background: violet;
+    cursor: pointer;
+}
+
+.table_content{
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px -6px rgba(0,0,0,0.1);
+}
+
+.table_container{
+    height: 20px;
+    white-space: nowrap;
+    border-collapse: collapse;
+    border-radius: 1rem;
+}
+
+.container_table{
+    height: 90vh;
+    width: auto;
+    overflow-y: scroll;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.19);
+}
+
+.container_table thead th {
+  position: sticky;
+  top: 0;
+  margin: 0px;
+}
+
+table thead tr th{
+    width: 150vh;
+    height: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    font-family: 'Poppins';
+    border-collapse: collapse;
+    text-transform: capitalize;
+    color: #fff;
+  }
+
+  thead tr svg {
+    font-size: 2.5vh;
+  }
+
+  table thead tr{
+    white-space: nowrap;
+    border-collapse: collapse;
+    border-bottom: solid white 5px; 
+    
+  }
+
+  .container_table thead tr {
+    position: sticky;
+    top: 0;
+    height:20px;
+    background: rgb(190, 74, 248);
+    margin: 0px;
+    border: none;
+    border-bottom: 1px solid rgb(197, 197, 197);
+    box-shadow: 0px 5px 10px 3px rgba(0,0,0,0.2);
+  }
+
+  tbody td{
+    text-align:center;
+    white-space: nowrap;
+    border-collapse: collapse;
+    height: 30px;
+    font-family: 'Poppins';
+  }
+
+
+  tbody td svg {
+    color: rgb(208, 69, 226);
+    font-size: 1.5rem;
+  }
+
+  .act_buttons{
+    width: 15vh;
+    font-size: 15px;
+    display: flex;
+  }
+
+  .act_buttons svg {
+    color: rgb(128, 64, 245);
+    margin: 0 auto;
+    height: 27px;
+    width: 27px;
+  }
+
+  .act_buttons svg:hover{
+    font-size: 20px;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease .1s;
+  }
+
+  
+.modal_overlay{
+  backdrop-filter: blur(6px);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease-in .1s;
+}
+
+.modal_content {
+  width: 90%;
+  max-width: 500px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 0.3rem;
+  box-shadow: 0px 13px 50px 3px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+.close_btn{
+  height: 2rem;
+  width: 2rem;
+  font-size:1.5rem;
+  border:none;
+  background: none;
+  float: right;
+  margin-top: 2px;
+  outline: none;
+  border-radius: 50%;
+}
+
+.close_btn svg {
+  margin: 4px auto;
+}
+
+.close_btn:hover{
+  background: red;
+  color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.search_box{
+  background: none;
+  width: 95%;
+  border-radius: 5px;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  margin: 10px auto;
+}
+
+.search_box input{
+  background-color: transparent;
+  border: none;
+  height: 80%;
+  width: 50%;
+  font-size: 1.1rem;
+  font-family: 'Poppins';
+  margin-left: 5px;
+}
+
+.search_box input:focus{
+  outline: none;
+  font-weight: 400;
+}
+
+.search_box svg {
+  color: #a94ef3;
+  margin: 10px;
+  font-size: 20px;
+}
+
+
+.tooltip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tooltip_container{
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip{
+    background: blue;
+    position: absolute;
+    top: calc(-50% - 65px);
+    transform: translateX(20%);
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    color: #a22bf1;
+    text-align:left;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    min-width: 200px;
+    letter-spacing: 1px;
+    font-family: 'Poppins';
+    text-transform: capitalize;
+}
