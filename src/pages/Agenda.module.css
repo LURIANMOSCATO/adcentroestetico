@@ -26,7 +26,7 @@
     text-transform: uppercase;
     outline: none;
     color: white;
-    background: violet;
+    background: rgb(156, 57, 236);
     cursor: pointer;
 }
 
@@ -39,6 +39,7 @@
 
 .table_container{
     height: 20px;
+    width: 100%;
     white-space: nowrap;
     border-collapse: collapse;
     border-radius: 1rem;
@@ -108,24 +109,43 @@ table thead tr th{
   }
 
   .act_buttons{
-    width: 15vh;
+    width: 100%;
     font-size: 15px;
     display: flex;
   }
 
+  .act_buttons button{
+    margin: 5px auto;
+    margin-right: 5px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);
+    height: 36px;
+    width: 45px;
+  }
+  .act_buttons button:hover{
+    border: none;
+    height: 41px;
+  }
+  
+  .act_buttons button:last-child {
+    margin-right: 3px;
+}
+
+.act_buttons button svg:nth-child(3){
+  color: red;
+}
+
   .act_buttons svg {
     color: rgb(128, 64, 245);
     margin: 0 auto;
-    height: 27px;
-    width: 27px;
   }
 
   .act_buttons svg:hover{
-    font-size: 20px;
-    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.3);
-    border-radius: 5px;
     cursor: pointer;
     transition: all ease .1s;
+  
   }
 
   
@@ -220,7 +240,6 @@ table thead tr th{
 }
 
 .tooltip{
-    background: blue;
     position: absolute;
     top: calc(-50% - 65px);
     transform: translateX(20%);

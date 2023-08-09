@@ -4,6 +4,7 @@
     display: grid;
     height: 100vh;
     background: rgba(175, 102, 217, 0.5);
+    overflow-y: auto;
 }
 
 .cards{
@@ -153,13 +154,13 @@
 .content_panel .contents{
     align-content: center;
     align-items: center;
+    overflow-y: scroll;
 }
-.contentst{
+.contents{
     display: grid;
     align-items: center;
     text-align: left;
-    
-
+    overflow-y: scroll;
 }
 .list {
     margin: 0 auto;
@@ -183,6 +184,8 @@
 
 .desc_cont span{
   font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.2;
   
 }
 
@@ -211,6 +214,10 @@
   .tablePanel tbody tr td{
     white-space: nowrap;
     border-collapse: collapse;
+  }
+
+  .tablePanel {
+    overflow-y: scroll;
   }
 
 

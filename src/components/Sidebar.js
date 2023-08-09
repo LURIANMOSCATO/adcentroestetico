@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router'
 import '../App.css';
 import {BiHome, BiCalendar, BiDollarCircle} from 'react-icons/bi'
 import {GoGear} from 'react-icons/go'
-import {MdLogout} from 'react-icons/md'
+import {RiUserSharedLine} from 'react-icons/ri'
 import {RxHamburgerMenu, RxScissors} from  'react-icons/rx'
 import {LiaCashRegisterSolid} from 'react-icons/lia'
 import { NavLink } from 'react-router-dom'
@@ -50,7 +50,7 @@ const Sidebar = ({children}) =>  {
 
   return (
     <div className="container">
-        <div style={{width: isOpen ? "auto" : "60px"}}  className="sidebar">
+        <div style={{width: isOpen ? "auto" : "65px"}}  className="sidebar">
             <div className="top_section">
                 <h1 style={{display: isOpen ? "block" : "none"}}  className="logo">
                 <RxScissors/>
@@ -58,17 +58,17 @@ const Sidebar = ({children}) =>  {
                 <button onClick={logoutSubmit} 
                 style={{
                     background: "none",
-                    border: " 1px solid #c96859",
+                    border: " 1px solid rgb(156, 57, 236)",
                     height: "35px",
                     width: "60px",
                     padding: "5px 2px",
-                    fontSize: "15px",
-                    color: "#c96859",
+                    fontSize: "16px",
+                    color: "rgb(156, 57, 236)",
                     borderRadius: "5px",
                     cursor: "pointer",
                     marginRight: "0px"
                     }}
-                ><MdLogout/> Sair</button>
+                ><RiUserSharedLine/> Sair</button>
                 </h1>
                 <div style={{marginLeft: isOpen ? "30px" : "0px"}}  className="bars">
                     <RxHamburgerMenu onClick={toggle}/>

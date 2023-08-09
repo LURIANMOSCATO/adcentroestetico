@@ -18,6 +18,8 @@ function Caixa() {
 
   const [selectedProducts, setSelectedProducts] = useState([]); // Inicializa com null
 
+  const [desconto, setDesconto] = useState(0);
+
   useEffect(()=>{
     axios
     .get('http://localhost:8081/product_list')
@@ -28,7 +30,7 @@ function Caixa() {
     .catch((err) => console.log(err));
     }, []);
 
-    const addToSummary = (product) => {
+  const addToSummary = (product) => {
       const productIndex = selectedProducts.findIndex((item) => item.idProduto === product.idProduto);
     
       if (productIndex !== -1) {
@@ -43,7 +45,12 @@ function Caixa() {
           { ...product, quantidadeProduto: 1 },
         ]);
       }
-    };
+  };
+
+  const handleDescontoChange = (event) => {
+      setDesconto(parseFloat(event.target.value.replace(',', '.')));
+      
+  };
     
   const handleRemoveProduct = (indexToRemove) => {
     setSelectedProducts((prevProducts) => {
@@ -92,10 +99,15 @@ function Caixa() {
       };
     });
 
+    let totalVenda = calculateTotalSum(2);
+    if (!isNaN(desconto) && desconto > 0) {
+      totalVenda = (parseFloat(totalVenda) - desconto).toFixed(2);
+    }
+
     // Faça uma requisição para o backend para finalizar a venda
     axios.post('http://localhost:8081/finalizar_venda', {
         produtos: productsData,
-        total: calculateTotalSum(2), // Total da venda com duas casas decimais
+        total: totalVenda, // Total da venda com duas casas decimais
         // Outros dados da venda, se necessário
       })
       .then((res) => {
@@ -111,6 +123,9 @@ function Caixa() {
           progress: undefined,
           theme: "light",
           });
+          setTimeout(()=>{
+            window.location.reload();
+        }, 2000);
         // Limpar os produtos selecionados após a venda
         setSelectedProducts([]);
       })
@@ -216,9 +231,20 @@ function Caixa() {
           </div>
 
           <div className={styles.calc_total}>
+          <div className={styles.desconto_input}>
+        <label htmlFor="descontoInput">Desconto: </label>
+        <input
+          id="descontoInput"
+          type="number"
+          value={desconto}
+          onChange={handleDescontoChange}
+          min={0}
+        />
+      </div>
+      
 
             <div className={styles.total_sum}>
-              <span className={styles.value_pay}>R$ {calculateTotalSum(2)}</span>
+            <span className={styles.value_pay}>R$ {calculateTotalSum(2)}</span>
             </div>
           
             <button className={styles.button_sell} 

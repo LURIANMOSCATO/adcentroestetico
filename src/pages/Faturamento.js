@@ -173,7 +173,7 @@ function Faturamento() {
         <div className={styles.contet_txt}>
         <span>Registro de Valores</span>
         <p className={styles.description_list}>
-        fluxo de caixa
+        Fluxo de Caixa
         </p>
         </div>
 
@@ -207,7 +207,7 @@ function Faturamento() {
 
     <div className={styles.content_panel}>
 
-      <div className={styles.contents}>
+      <div className={styles.cards2}>
         <div className={styles.list}>
           <table className={styles.tablePanel}>
             <thead>
@@ -269,9 +269,11 @@ function Faturamento() {
   
   </TabPanel>
 
-  <TabPanel className={styles.tabPanel}>  <div className={styles.content_panel}>
+  <TabPanel className={styles.tabPanel}>  
+  
+  <div className={styles.content_panel}>
 
-<div className={styles.contents}>
+<div className={styles.cards2}>
   <div className={styles.list}>
     <table className={styles.tablePanel}>
       <thead>
@@ -295,7 +297,8 @@ function Faturamento() {
 </div>
 
 
-</div></TabPanel>
+</div>
+</TabPanel>
   <TabPanel className={styles.tabPanel}>Cadastro de Serviços</TabPanel>
   
     </Tabs>

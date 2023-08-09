@@ -14,7 +14,6 @@ function Form() {
 
     const [genter, setGenter] = useState([]);
     const [gestante, setGestante] = useState([]);
-
     const [values, setValues] = useState({
         cliente:'',
         telefone:'',
@@ -53,6 +52,14 @@ function Form() {
         })
         .catch(err => console.log(err))
     }
+
+    function getCurrentDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = (today.getMonth() + 1).toString().padStart(2, '0');
+        const day = today.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
+      }
 
   return (
     <div className={styles.form_content}>
@@ -132,7 +139,10 @@ function Form() {
                 <div className={styles.box}>
 
                 <input type="date" className={styles.input_field} 
-                onChange={e => setValues({...values, dataServico: e.target.value})}/>
+                onChange={e => setValues({...values, dataServico: e.target.value})}
+                min={getCurrentDate()}
+                />
+                
 
                 </div>
 
@@ -149,7 +159,9 @@ function Form() {
                 <div className={styles.box}>
 
                 <input type="number" className={styles.input_field} placeholder='Tempo de Atendimento'
-                onChange={e => setValues({...values, tempo: e.target.value})}/>
+                onChange={e => setValues({...values, tempo: e.target.value})}
+                min={0}
+                />
 
                 </div>
                 <label htmlFor=''>Valor</label>
@@ -161,7 +173,7 @@ function Form() {
                 </div>
 
                 <label htmlFor=''>Gestante? <p className={styles.result_field} 
-                 style={{ background: gestante === 'SIM' ? 'red' : 'green' }}>{gestante}</p></label>
+                 style={{ background: gestante === 'SIM' ? 'red' : 'green', color: "#fff"}}>{gestante}</p></label>
                 <div className={styles.box}>
                     
                     <input type="radio" name="gestante" value="SIM" placeholder='Nome do Cliente' className={styles.input_field}

@@ -4,6 +4,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Agenda from './pages/Agenda'
+import ViewEdit from './pages/ViewEdit';
 import Caixa from './pages/Caixa';
 import Faturamento from './pages/Faturamento';
 import Login from './Login'
@@ -24,6 +25,7 @@ function App() {
         <Route element= {<SidebarLayout/>}>
           <Route path="/" element= {<Protected Component={Home} />} />
           <Route path="/agenda" element={<Protected Component={Agenda} />} />
+          <Route path="/view/:id" element={<Protected Component={ViewEdit} />} />
           <Route path="/caixa" element={<Protected Component={Caixa}/>} />
           <Route path="/faturamento" element={<Protected Component={Faturamento}/>} />
         </Route>
