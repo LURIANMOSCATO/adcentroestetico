@@ -4,10 +4,9 @@ import styles from './Agenda.module.css'
 import { Tooltip } from './Tooltip';
 import Modal from 'react-modal';
 import axios from 'axios';
-import {BiSolidEdit, BiMoneyWithdraw, BiSearch} from 'react-icons/bi';
+import {BiSolidEdit, BiMoneyWithdraw,BiUser, BiSearch} from 'react-icons/bi';
 import {BsPersonFillCheck,BsPersonAdd, BsTrash3, BsClockHistory, BsPhone, BsCalendarCheck} from 'react-icons/bs'
 import {AiOutlineScissor} from 'react-icons/ai'
-import {CiUser } from 'react-icons/ci';
 import {CgSandClock} from 'react-icons/cg'
 import {RiUserHeartLine} from 'react-icons/ri'
 import {LiaTimesSolid} from 'react-icons/lia';
@@ -126,7 +125,7 @@ function Agenda() {
         <table className={styles.table_container}>
         <thead>
                         <tr>
-                        <th> <CiUser/> Cliente</th>
+                        <th> <BiUser/> Cliente</th>
                         <th> <BsPhone/> Telefone</th>
                         <th><RiUserHeartLine/> Profissional</th>
                         <th><AiOutlineScissor/> Serviço</th>

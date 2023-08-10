@@ -11,7 +11,8 @@
     width: auto;
     margin: 1px;
     margin-left: 10px;
-    color: #00000067;
+    color: #a72ff7d5;
+    
 }
 
 .title {
@@ -114,7 +115,7 @@ form label .user_details .input_field {
 */
 
 form .button{
-    height: 50px;
+    height: 60px;
     margin: 20px 0;
     align-items: center;
     justify-content: center;
@@ -157,9 +158,14 @@ form .button button{
 /*editar e visualizar*/
 
 .editview{
-    width: 80vh;
-    box-shadow: 0px 4px 15px -3px rgba(0,0,0,0.39);
-    border-radius: 1vh;
+    width: 80%;
+    max-width: 460px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 0.3rem;
+    box-shadow: 0px 10px 20px 3px rgba(0,0,0,0.3);
+    outline: none;
+    margin-left: 30px;
 }
 
 .editview .titleview{
@@ -170,12 +176,11 @@ form .button button{
 }
 
 .buttonview{
-    display: flex;
-    box-shadow: 0px -6px 15px -3px rgba(0,0,0,0.2);
+    display: grid;
 }
 
 .buttonview .button_action{
-    width: 35vh;
+    width: 40vh;
     height: 8vh;
     margin: auto;
     margin-top: 20px;
@@ -184,17 +189,36 @@ form .button button{
     background: none;
     color: #4b1df1;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 400;
+
 }
 
 .button_action svg {
     font-size: 20px;
 }
 
+.button_back{
+    background: none;
+    border: none;
+    float: right;
+    border-radius: 2px;
+    margin-right: 10px;
+    margin-top: 10px;
+    height: 20px;
+    width: 50px;
+    color: red;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.button_back:hover{
+    border-bottom: 2px solid red;
+    cursor: pointer;
+}
+
 .buttonview .button_action:hover{
     background: #4b1df1;
     color: #fff;
     border:none;
-
 }
 /*editar e visualizar*/

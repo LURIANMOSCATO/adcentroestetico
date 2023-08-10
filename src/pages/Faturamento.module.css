@@ -3,7 +3,7 @@
     align-items: center;
     display: grid;
     height: 100vh;
-    background: rgba(175, 102, 217, 0.5);
+    background: rgba(175, 102, 217, 0.3);
     overflow-y: auto;
 }
 
@@ -89,6 +89,34 @@
     border-radius: 5px;
   }
 
+  .listagem2{
+    height: auto;
+    width: 150vh;
+    background: #fff;
+    box-shadow: 0px 6px 10px 2px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+
+  .button_open{
+    border: none;
+    float: right;
+    box-shadow: 0px 1px 15px -5px rgba(0, 0, 0, 0.5);
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    text-align:center;
+    font-size: 4vh;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    color: white;
+    background: rgb(156, 57, 236);
+    cursor: pointer;
+}
+
   /*tabs listagem*/
 
 
@@ -173,13 +201,13 @@
 .desc_list svg {
     margin: 5px;
     align-items: center;
-    font-size: 35px;
+    font-size: 40px;
     border-radius: 50%;
     color: rgb(85, 81, 81);
 }
 
 .desc_cont{
-    display: grid;
+    display: block;
 }
 
 .desc_cont span{
@@ -308,4 +336,52 @@
   color: #000;
   font-size: 12px;
   padding: 1px 2px;
+}
+
+.modal_overlay{
+  backdrop-filter: blur(6px);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease-in .1s;
+}
+
+.modal_content {
+  width: 90%;
+  max-width: 400px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 0.3rem;
+  box-shadow: 0px 13px 50px 3px rgba(0,0,0,0.2);
+  outline: none;
+}
+
+
+.close_btn{
+  height: 2rem;
+  width: 2rem;
+  font-size:1.5rem;
+  border:none;
+  background: none;
+  float: right;
+  margin-top: 2px;
+  outline: none;
+  border-radius: 50%;
+}
+
+.close_btn svg {
+  margin: 4px auto;
+}
+
+.close_btn:hover{
+  background: red;
+  color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  cursor: pointer;
 }

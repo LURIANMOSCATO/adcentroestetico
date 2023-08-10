@@ -99,7 +99,11 @@ function ViewEdit() {
         theme="light"
         />
         <form onSubmit={handleUpdate} className={styles.editview}>
+        <Link to={'/agenda'}>
+        <button className={styles.button_back}>Voltar</button>
+        </Link>
             <h1 className={styles.titleview}>Visualize ou Edite</h1>
+            
             
             <div className={styles.user_details}>
 
@@ -260,12 +264,8 @@ function ViewEdit() {
                 
             </div>
             <div className={styles.buttonview}>
-                <Link to={'/agenda'}>
-                <button className={styles.button_action}>Voltar</button>
-                </Link>
-                    
-                <button className={styles.button_action}>Atualizar <FaSave/></button>
-                </div>
+            <button className={styles.button_action}>Atualizar </button>
+            </div>
         </form>
     </div>
   )

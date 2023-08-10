@@ -7,6 +7,7 @@ import Agenda from './pages/Agenda'
 import ViewEdit from './pages/ViewEdit';
 import Caixa from './pages/Caixa';
 import Faturamento from './pages/Faturamento';
+import Configurar from './pages/Config';
 import Login from './Login'
 import Protected from './Protected';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/view/:id" element={<Protected Component={ViewEdit} />} />
           <Route path="/caixa" element={<Protected Component={Caixa}/>} />
           <Route path="/faturamento" element={<Protected Component={Faturamento}/>} />
+          <Route path="/configurar" element={<Protected Component={Configurar}/>} />
         </Route>
         <Route path="/login" element={<Login/>} />
       </Routes>

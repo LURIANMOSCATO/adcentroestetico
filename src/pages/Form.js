@@ -222,8 +222,8 @@ function Form() {
                 
             </div>
             <div className={styles.button}>
-                    <button className={styles.button_action}>Registrar <BsFillClipboardCheckFill/></button>
-                </div>
+            <button className={styles.button_action}>Registrar <BsFillClipboardCheckFill/></button>
+            </div>
         </form>
 
     </div>
