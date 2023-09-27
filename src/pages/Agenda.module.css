@@ -1,13 +1,5 @@
 *{  
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.container{
-    display: flex;
-    height: 90vh;
-    width: 90%;
-    margin: 10px auto;
-    margin-right: 50px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .button_open{
@@ -18,8 +10,8 @@
     width: 4rem;
     border-radius: 50%;
     position: fixed;
-    bottom: 7%;
-    right: 3%;
+    bottom: 14%;
+    right: 1%;
     text-align:center;
     font-size: 5vh;
     font-weight: 500;
@@ -30,128 +22,31 @@
     cursor: pointer;
 }
 
-.table_content{
-    margin: 0 auto;
-    margin-top: 10px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 15px -6px rgba(0,0,0,0.1);
-}
-
-.table_container{
-    height: 20px;
-    width: 100%;
-    white-space: nowrap;
-    border-collapse: collapse;
-    border-radius: 1rem;
-}
-
-.container_table{
-    height: 90vh;
-    width: auto;
-    overflow-y: scroll;
-    border-radius: 0.5rem;
-    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.19);
-}
-
-.container_table thead th {
-  position: sticky;
-  top: 0;
-  margin: 0px;
-}
-
-table thead tr th{
-    width: 150vh;
-    height: 30px;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    font-family: 'Poppins';
-    border-collapse: collapse;
-    text-transform: capitalize;
-    color: #fff;
-  }
-
-  thead tr svg {
-    font-size: 2.5vh;
-  }
-
-  table thead tr{
-    white-space: nowrap;
-    border-collapse: collapse;
-    border-bottom: solid white 5px; 
-    
-  }
-
-  .container_table thead tr {
-    position: sticky;
-    top: 0;
-    height:20px;
-    background: rgb(190, 74, 248);
-    margin: 0px;
+.button_calendar{
     border: none;
-    border-bottom: 1px solid rgb(197, 197, 197);
-    box-shadow: 0px 5px 10px 3px rgba(0,0,0,0.2);
-  }
-
-  tbody td{
+    float: right;
+    box-shadow: 0px 1px 15px -5px rgba(0, 0, 0, 0.5);
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 26%;
+    right: 1%;
     text-align:center;
-    white-space: nowrap;
-    border-collapse: collapse;
-    height: 30px;
-    font-family: 'Poppins';
-  }
-
-
-  tbody td svg {
-    color: rgb(208, 69, 226);
-    font-size: 1.5rem;
-  }
-
-  .act_buttons{
-    width: 100%;
-    font-size: 15px;
-    display: flex;
-  }
-
-  .act_buttons button{
-    margin: 5px auto;
-    margin-right: 5px;
-    border: 1px solid rgba(128, 128, 128, 0.5);
-    border-radius: 5px;
-    background: rgb(255, 255, 255);
-    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);
-    height: 36px;
-    width: 45px;
-  }
-  .act_buttons button:hover{
-    border: none;
-    height: 41px;
-  }
-  
-  .act_buttons button:last-child {
-    margin-right: 3px;
-}
-
-.act_buttons button svg:nth-child(3){
-  color: red;
-}
-
-  .act_buttons svg {
-    color: rgb(128, 64, 245);
-    margin: 0 auto;
-  }
-
-  .act_buttons svg:hover{
+    font-size: 5vh;
+    font-weight: 500;
+    text-transform: uppercase;
+    outline: none;
+    color: white;
+    background: rgb(156, 57, 236);
     cursor: pointer;
-    transition: all ease .1s;
-  
-  }
+}
 
-  
+
 .modal_overlay{
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(5px);
   position: fixed;
+  z-index: 10;
   top: 0;
   bottom: 0;
   right: 0;
@@ -160,16 +55,18 @@ table thead tr th{
   align-items: center;
   justify-content: center;
   transition: all ease-in .1s;
+
 }
 
 .modal_content {
-  width: 80%;
-  max-width: 460px;
+  width: 400px;
+  max-width: 100%;
   background: #fff;
   padding: 10px;
   border-radius: 0.3rem;
   box-shadow: 0px 13px 50px 3px rgba(0,0,0,0.2);
   outline: none;
+  overflow-x: none;
 }
 
 .close_btn{
@@ -177,6 +74,7 @@ table thead tr th{
   width: 2rem;
   font-size:1.5rem;
   border:none;
+  z-index: 1;
   background: none;
   float: right;
   margin-top: 2px;
@@ -192,39 +90,7 @@ table thead tr th{
   background: red;
   color: #fff;
   border-radius: 50%;
-  margin: 0 auto;
   cursor: pointer;
-}
-
-.search_box{
-  background: none;
-  width: 95%;
-  border-radius: 5px;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  margin: 10px auto;
-}
-
-.search_box input{
-  background-color: transparent;
-  border: none;
-  height: 80%;
-  width: 50%;
-  font-size: 1.1rem;
-  font-family: 'Poppins';
-  margin-left: 5px;
-}
-
-.search_box input:focus{
-  outline: none;
-  font-weight: 400;
-}
-
-.search_box svg {
-  color: #a94ef3;
-  margin: 10px;
-  font-size: 20px;
 }
 
 
@@ -241,18 +107,18 @@ table thead tr th{
 
 .tooltip{
     position: absolute;
-    top: calc(-50% - 65px);
-    transform: translateX(20%);
+    top: calc(-40% - 60px);
+    transform: translateX(5%);
     background: rgb(255, 255, 255);
-    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
-    border: 1px solid rgba(128, 128, 128, 0.3);
-    color: #a22bf1;
+    box-shadow: 8px 10px 15px -5px rgba(0,0,0,0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    color: #000000b0;
+    font-size: 15px;
     text-align:left;
     padding: 10px;
     border-radius: 5px;
-    z-index: 1;
+    z-index: 10;
     min-width: 200px;
-    letter-spacing: 1px;
     font-family: 'Poppins';
     text-transform: capitalize;
 }

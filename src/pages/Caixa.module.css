@@ -1,50 +1,8 @@
-.container {
-    display: flex;
-    margin: 0 auto;
-    margin-top: 25px;
-    width: 160vh;
-    height: 90vh;
-    border-radius: 1rem;
-}
 
-.products_list {
-    width: 80vh;
-    margin-left: 5px;
-    overflow-y: scroll;
-    box-shadow: 0px 10px 29px -3px rgba(0,0,0,0.3);
-    border-radius: 5px;
-    background: #fff;
-}
 
 .products_list:nth-child(2){
     width: 10vh;
     margin: 5px auto;
-}
-
-.products_lists {
-    width: 70vh;
-    margin-left: 5px;
-    overflow-y: scroll;
-    box-shadow: 0px 10px 29px -3px rgba(0,0,0,0.3);
-    border-radius: 5px;
-}
-
-.fixed_title{
-    position: sticky;
-    top: 0;
-    margin: 0px;
-    text-align: center;
-    border-radius: 5px;
-}
-
-.fixed_title h1 {
-    margin-top: 0px;
-    color: #fff;
-    background: rgb(196, 78, 243);
-    border-radius: 2px;
-    border-bottom: 1px solid rgb(197, 35, 247);
-    font-weight: 400;
-
 }
 
 .cards{
@@ -55,8 +13,8 @@
 
 .product_card{
     border: 1px solid rgba(180, 177, 177, 0.5);
-    height: 25vh;
-    width: 22vh;
+    height: 30vh;
+    width: 25vh;
     margin: 10px;
     border-radius: 5px;
 }
@@ -72,14 +30,14 @@
 }
 
 .product_content span {
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 18px;
     font-family: 'Poppins';
     color: #000;
     height: 30px;
     width: auto;
     border-radius: 5px;
-    margin-left: 5px;
+    margin: auto;
 }
 
 .product_content span svg {
@@ -89,6 +47,8 @@
 
 .product_content p {
     margin-left: 5px;
+    height: auto;
+    margin: auto;
 }
 
 .button_add{
@@ -115,10 +75,9 @@
     border: none;
 }
 .products_title{
-    font-size: 4vh;
+    font-size: 3vh;
     margin-top: 5px;
     margin: auto;
-    margin-left: 6px;
     font-size: 11px;
     font-weight: 700;
     color: purple;
@@ -174,17 +133,16 @@
     border: 1px solid rgba(102, 51, 153, 0.5);
     border-radius: 5px;
     margin: 3px auto;
-    height: 35px;
+    height: 40px;
     width: 60vh;
     padding: 5px 15px;
     display: flex;
     box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.1);
-    border-left: 3px solid rgba(128, 0, 128, 0.8);
 }
 
 .cart_product:hover{
     border-left: 5px solid  rgba(223, 8, 187, 0.932);
-    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.29);
+    box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.2);
     background: #fff;
 
 }
@@ -200,7 +158,7 @@
     color: #fff;
     background: rgb(149, 44, 247);
     font-weight: 500;
-    font-size: 22px;
+    font-size: 18px;
     cursor: pointer;
 }
 
@@ -225,23 +183,8 @@
     border-top: 1px solid rgba(128, 128, 128, 0.3);
 }
 
-.desconto_input {
-    display: grid;
-    width: 25%;
-}
 
-.desconto_input label {
-    margin-top: 10px;
-    margin-left: 10px;
-    font-weight: 300;
-    color: #000;
 
-}
-
-.desconto_input input{
-    box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.2);
-    height: 35px;
-}
 
 .total_sum{
     width: 30vh;
@@ -306,14 +249,19 @@
     margin-right: 10px;
     margin: auto;
     white-space:pre-line;
+}
 
+.product_incart p{
+    margin: 5px;
+    margin-left: 10px;
+    float: left;
 }
 
 .product_incart:nth-child(1){
     font-weight: 600;
     font-size: 16px;
     margin-right: 5px;
-    width: 100%;
+    width: 90%;
     text-align: center;
 }
 
@@ -326,7 +274,7 @@
 }
 
 .product_incart:nth-child(3){
-    font-weight: 700;
+    font-weight: 400;
     font-size: 14px;
     margin-right: 15px;
     align-items: flex-start;
@@ -334,4 +282,5 @@
     display: flex;
     width: 33vh;
     text-align: left;
+    letter-spacing: 1px;
 }

@@ -1,10 +1,7 @@
-import React, {useState} from 'react'
-import styles from './Form.module.css'
-import {BsFillClipboardCheckFill} from 'react-icons/bs'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios';
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-/*import { Calendar } from "react-modern-calendar-datepicker";
-import DatePicker from "react-modern-calendar-datepicker";*/
+
+/*import DatePicker from "react-modern-calendar-datepicker";*/
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +11,14 @@ function Form() {
 
     const [genter, setGenter] = useState([]);
     const [gestante, setGestante] = useState([]);
+    const [servico, setServico] = useState([]);
+
+    useEffect(()=>{
+        axios.get('http://localhost:8081/servicos')
+        .then(res => setServico(res.data))
+        .catch(err => console.log(err));
+    }, [])
+
     const [values, setValues] = useState({
         cliente:'',
         telefone:'',
@@ -22,6 +27,7 @@ function Form() {
         dataServico:'',
         hora:'',
         tempo:'',
+        pagamento: '',
         valor:'',
         gestante:'',
         alergica:'',
@@ -31,6 +37,20 @@ function Form() {
     const handleSubmit = (e) => {
 
         e.preventDefault();
+        if (!values.cliente || !values.telefone || !values.profissional || !values.dataNascimento || !values.dataServico || !values.hora ||!values.pagamento ||!values.valor) {
+            toast.error('Preencha todos os campos para continuar.', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return;
+        }
+
         axios.post('http://localhost:8081/record_client', values)
         .then(res => {
             if(res.status===200) {
@@ -59,10 +79,10 @@ function Form() {
         const month = (today.getMonth() + 1).toString().padStart(2, '0');
         const day = today.getDate().toString().padStart(2, '0');
         return `${year}-${month}-${day}`;
-      }
+    }
 
   return (
-    <div className={styles.form_content}>
+    <div className="bg-white w-full">
 
         <ToastContainer
         position="top-center"
@@ -76,154 +96,171 @@ function Form() {
         theme="light"
         />
 
-        <div className={styles.header_title}>
-        <h1 className={styles.title}>Registro</h1>
-
+        <div className=" rounded-lg shadow-md top-px">
+        <h1 className="text-xl p-2">Agendamento</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
             
-            <div className={styles.user_details}>
+            <div className="w-[80%] items-center overflow-scroll h-[29rem]">
 
-                <label htmlFor=''>Cliente</label>
-
-                <div className={styles.box}>
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Cliente</label>
                     <input type="text" placeholder='Digite o nome do Cliente'
-                    className={styles.input_field}
+                    className="w-full mr-1 outline-none border shadow focus:rounded-none focus:bg-gray-100 h-10 rounded-md"
                     onChange={e => setValues({...values, cliente: e.target.value})}
                     />
-                </div>
 
-                <label htmlFor=''>Telefone</label>
-                <div className={styles.box}>
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Telefone</label>
+                
                     <input type="text" placeholder='Digite o telefone do Cliente' 
-                    className={styles.input_field}
+                    className="w-full mr-1 outline-none border shadow focus:rounded-none placeholder:text-gray-400 focus:bg-gray-100 h-10 rounded-md"
+                    maxLength={11}
                     onChange={e => setValues({...values, telefone: e.target.value})}/>
-                </div>
+                
 
-                <label htmlFor=''>Profissional</label>
-                <div className={styles.box}>
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Profissional</label>
                     
                     <select placeholder='Escolha a Profissional'
+                    className="w-full mr-1 outline-none border shadow focus:rounded-none focus:bg-gray-100 h-10 rounded-md"
                     onChange={e => setValues({...values, profissional: e.target.value})}
                     >
                         <option>---</option>
                         <option>Andreza</option>
                         <option>Daiane</option>
                     </select>
-                </div>
 
-                <label htmlFor=''>Serviço:</label>
-                <div className={styles.box}>
-                <select placeholder='Escolha o Serviço' 
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Serviço:</label>
+                
+                <select placeholder='Escolha o Serviço'
+                className="w-full mr-1 outline-none border shadow focus:rounded-none focus:bg-gray-100 h-10 rounded-md"
+                value={values.servico} 
                 onChange={e => setValues({...values, servico: e.target.value})}
                 >
                         <option>---</option>
-                        <option>Manutenção</option>
-                        <option>Corte de Cabelo</option>
-                        <option>Pintura</option>
+                        {servico.map((servico) => (
+                        <option key={servico.id} value={servico.nome}>
+                        {servico.tituloServico}
+                         </option>
+                        ))}
                     </select>
-                </div>
+                
 
-                <label htmlFor=''>Data Nascimento</label>
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Data Nascimento</label>
 
-                <div className={styles.box}>
+                <input type="date" 
+                className="w-full ml-2 outline-none border shadow focus:rounded-none focus:bg-gray-100 focus:rounded h-10 rounded-md"
+                onChange={e => setValues({...values, dataNascimento: e.target.value})} />
 
-                <input type="date" className={styles.input_field} 
-                onChange={e => setValues({...values, dataNascimento: e.target.value})}/>
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Data Atendimento</label>
 
-                </div>
-
-                <label htmlFor=''>Data Atendimento</label>
-
-                <div className={styles.box}>
-
-                <input type="date" className={styles.input_field} 
+                <input type="date" 
+                className="w-full ml-2 outline-none border shadow focus:rounded-none focus:bg-gray-100 h-10 rounded-md"
                 onChange={e => setValues({...values, dataServico: e.target.value})}
                 min={getCurrentDate()}
                 />
-                
 
-                </div>
-
-                <label htmlFor=''>Horário</label>
-
-                <div className={styles.box}>
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Horário</label>
             
-                <input className={styles.input_field} type="time"
+                <input type="time"
+                className="w-full mr-1 outline-none border shadow focus:rounded-none focus:bg-gray-100 h-10 rounded-md"
                 onChange={e => setValues({...values, hora: e.target.value})}/> 
 
-                </div>
+        
 
-                <label htmlFor=''>Tempo</label>
-                <div className={styles.box}>
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Tempo</label>
 
-                <input type="number" className={styles.input_field} placeholder='Tempo de Atendimento'
+                <input type="number"
+                className="w-full mr-1 outline-none border shadow focus:rounded-none placeholder:text-gray-400 focus:bg-gray-100 h-10 rounded-md"
+                placeholder='Tempo de Atendimento'
                 onChange={e => setValues({...values, tempo: e.target.value})}
                 min={0}
                 />
+                
+                <label htmlFor='' className='mt-1 ml-1 font-medium'>Forma de pagamento:</label>
+                
+                <select placeholder='Escolha o Serviço'
+                className="w-full mr-1 outline-none border shadow focus:rounded-none 
+                focus:bg-gray-100 h-10 rounded-md"
+                onChange={e => setValues({...values, pagamento: e.target.value})}
+                >
+                    <option>---</option>
+                    <option>Pix</option>
+                    <option>Dinheiro</option>
+                    <option>Crédito</option>
+                    <option>Débito</option>
+                    </select>
+                
 
-                </div>
-                <label htmlFor=''>Valor</label>
-                <div className={styles.box}>
+                <label htmlFor='' className='grid mt-1 ml-1 font-medium'>Valor</label>
 
-                <input type="text" placeholder='Valor do Serviço'  step="0.01" className={styles.input_field}
-                onChange={e => setValues({...values, valor: e.target.value})}/>
+                <input type="text" placeholder='Valor do Serviço' step="0.01"
+                className="w-full mr-1 outline-none border shadow focus:rounded-none placeholder:text-gray-400 focus:bg-gray-100 h-10 rounded-md"
+                onChange={e => setValues({...values, valor: e.target.value})}
+                />
 
-                </div>
-
-                <label htmlFor=''>Gestante? <p className={styles.result_field} 
-                 style={{ background: gestante === 'SIM' ? 'red' : 'green', color: "#fff"}}>{gestante}</p></label>
-                <div className={styles.box}>
+                <label htmlFor='' className='flex mt-2 ml-1 text-center font-medium'>Gestante?
+                <p className='p-1 rounded-lg w-16 ml-5'  
+                style={{ 
+                background: gestante === 'SIM' ? 'red' : 'green', 
+                color: "#fff"
+                }}>{gestante}</p></label>
+                
+                <input type="radio" name="gestante" value="SIM" placeholder='Nome do Cliente' 
+                className="w-6 h-6 mr-5"
+                //onChange={e=>setGestante(e.target.value)}
+                onChange={(e) => {
+                setValues({ ...values, gestante: e.target.value });
+                setGestante(e.target.value);
+                }}
                     
-                    <input type="radio" name="gestante" value="SIM" placeholder='Nome do Cliente' className={styles.input_field}
+                    />
+                    <input type="radio" name="gestante" value="NÃO" 
+                    className="w-6 h-6 mr-5"
                     //onChange={e=>setGestante(e.target.value)}
                     onChange={(e) => {
                     setValues({ ...values, gestante: e.target.value });
                     setGestante(e.target.value);
                     }}
-                    
-                    />
-                    <input type="radio" name="gestante" value="NÃO" placeholder='Nome do Cliente' className={styles.input_field}
-                    //onChange={e=>setGestante(e.target.value)}
-                    onChange={(e) => {
-                    setValues({ ...values, gestante: e.target.value });
-                    setGestante(e.target.value);
-                    }}
                     />
                     
-                </div>
-                <label htmlFor=''>Alérgica?
-                <p className={styles.result_field} 
-                 style={{ background: genter === 'SIM' ? 'red' : 'green' }}>{genter}</p>
+                
+                <label htmlFor='' className='flex mt-2 ml-1 text-center font-medium'>Alergia:
+                <p className='p-1 rounded-lg w-16 ml-5' 
+                style={{ 
+                background: genter === 'SIM' ? 'red' : 'green', 
+                color:'#fff' }}>{genter}</p>
                  </label>
-                <div className={styles.box}>
+                
 
-                    <input type="radio" name="genter" value="SIM" placeholder='Nome do Cliente' className={styles.input_field}
+                    <input type="radio" name="genter" value="SIM"
+                    className="w-6 h-6 mr-5"
                     onChange={(e) => {
                     setValues({ ...values, alergica: e.target.value });
                     setGenter(e.target.value);
                     }} />
 
-                    <input type="radio" name="genter" value="NÃO" placeholder='Nome do Cliente' className={styles.input_field}
+                    <input type="radio" name="genter" value="NÃO" placeholder='Nome do Cliente' 
+                    className="w-6 h-6 mr-5"
                     onChange={(e) => {
                     setValues({ ...values, alergica: e.target.value });
                     setGenter(e.target.value);
                     }} />
 
-                </div>
-                <label htmlFor=''>Descreva a Alergia:</label>
-                <div className={styles.box}>
-
-                <input type="text" placeholder='Digite aqui...' className={styles.input_field} 
+                
+                <label htmlFor='' className='grid font-medium ml-1'>Descreva a Alergia:</label>
+                <input type="text" placeholder='Digite aqui...'
+                className="w-full mr-1 outline-none border shadow focus:rounded-none focus:bg-gray-100 h-10 rounded-md"
                 onChange={e => setValues({...values, alergia: e.target.value})}/>
 
-                </div>
+                
                 
             </div>
-            <div className={styles.button}>
-            <button className={styles.button_action}>Registrar <BsFillClipboardCheckFill/></button>
+
+            <div className="w-4/5 items-center justify-center">
+            <button className="w-full bottom-2 rounded tracking-wider shadow-md
+            bg-gray-900 p-2 text-white">Registrar</button>
             </div>
+
         </form>
 
     </div>

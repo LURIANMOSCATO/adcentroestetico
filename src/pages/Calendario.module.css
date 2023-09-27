@@ -1,0 +1,20 @@
+.calendar {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    border: none;
+}
+.list_events ul li {
+    text-decoration: none;
+    list-style: none;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-left: 5px solid rgb(121, 49, 236);
+    width: 90%;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.list_day{
+    margin-left: 10px;
+    width: 80%;
+}

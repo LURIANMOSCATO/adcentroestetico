@@ -2,8 +2,7 @@
     display: flex;
     margin: 0 auto;
     margin-top: 25px;
-    width: 160vh;
-    height: 90vh;
+    width: 400px;
     border-radius: 1rem;
 }
 
@@ -12,7 +11,6 @@
     margin: 1px;
     margin-left: 10px;
     color: #a72ff7d5;
-    
 }
 
 .title {
@@ -21,11 +19,9 @@
 }
 
 form .user_details {
-    max-height: 400px;
-    width: 95%;
-    margin: 5px auto;
-    overflow-y: scroll;
-    border-radius: 0.5rem;
+    max-height: 350px;
+    width: 100%;
+    overflow: scroll;
 }
 
 form label {
@@ -45,22 +41,14 @@ form label .result_field {
     color: #fff;
 }
 
- input[type="radio"] {
-    margin: 10px;
-    height: 20px;
-    width: 20px;
- }
+ 
 
-.result_bg {
-    background: rgb(105, 134, 105);
-    padding: 10px 20px;
-}
 
 
 form label .user_details .input_field {
     margin-bottom: 15px;
     margin: 10px auto 10px;
-    width: calc(100% / 2- 20px);
+    width: calc(90% / 2- 20px);
 }
 
 .input_field:focus{
@@ -88,8 +76,9 @@ form label .user_details .input_field {
 }
 
 .box{
-    border-bottom: 3px solid rgba(81, 10, 173, 0.5);
-    margin: 2vh;
+    border-bottom: 1px solid rgba(81, 10, 173, 0.5);
+    border-radius: 1px;
+    width: 100%;
 }
 
 .box_radio{
@@ -101,35 +90,13 @@ form label .user_details .input_field {
     left: 50%;
 }
 
-/*.box_radio label {
-    color: red;
-    position: relative;
-    font-family: 'Poppins';
-    font-weight: 500;
-    border: 1px solid purple;
-    border-radius: 1vh;
-    padding: 10px 50px;
-    display: flex;
-    align-items: center;
-}
-*/
-
 form .button{
     height: 60px;
+    width: 100%;
     margin: 20px 0;
     align-items: center;
     justify-content: center;
-}
-
-form .button button{
-    font-size:20px;
-    font-weight: 500;
-    font-family:'Poppins';
-    border-radius: 6px;
-    margin-right: 60px;
-    align-items: center;
-    justify-content:center;
-    background: none;
+    
 }
 
 .button_action {
@@ -158,8 +125,8 @@ form .button button{
 /*editar e visualizar*/
 
 .editview{
-    width: 80%;
-    max-width: 460px;
+    width: 80vh;
+    height: 80vh;
     background: #fff;
     padding: 10px;
     border-radius: 0.3rem;
@@ -176,7 +143,7 @@ form .button button{
 }
 
 .buttonview{
-    display: grid;
+    display: flex;
 }
 
 .buttonview .button_action{

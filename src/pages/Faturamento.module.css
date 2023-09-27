@@ -3,8 +3,9 @@
     align-items: center;
     display: grid;
     height: 100vh;
-    background: rgba(175, 102, 217, 0.3);
+    background: rgba(175, 102, 217, 0.1);
     overflow-y: auto;
+    font-family: 'Poppins';
 }
 
 .cards{
@@ -18,7 +19,7 @@
   .values {
     box-shadow: 0px 2px 15px -3px rgba(0,0,0,0.2);
     border: 1px solid rgba(182, 182, 182, 0.3);
-    height: 80%;
+    height: 90%;
     width: 80%;
     margin: auto 10px;
     border-radius: 6px;
@@ -62,11 +63,11 @@
   }
 
   .days_count{
-    display: grid;
-    color: red;
     margin-left: 5px;
     text-align: left;
-    
+    display: flex;
+    flex-wrap: wrap; /* Permite que as divs quebrem para a próxima linha */
+    justify-content: flex-start;
   }
 
   .days_count .days_val{
@@ -75,10 +76,28 @@
     margin-top: 5px;
     margin-left: 5px;
     color: #252121;
-    border-bottom: 1px solid gray;
-    border-radius: 0;
+    border: 1px solid rgba(128, 128, 128, 0.3);
+    box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.1);
+    border-radius: 5px;
     display: flex;
     padding: 5px 5px;
+    font-size: 15px
+  }
+
+  .days_val p {
+    margin-left: 5px;
+    margin-top: 5px auto;
+  }
+
+  .custom_icon {
+    font-size: 10px;
+    color: red;
+}
+
+  .days_val span {
+    margin-left: 5px;
+    font-weight: 700;
+    color: rgba(128, 128, 128, 0.9);
   }
 
   .listagem{
@@ -90,8 +109,8 @@
   }
 
   .listagem2{
-    height: auto;
-    width: 150vh;
+    height: 90vh;
+    width: 160vh;
     background: #fff;
     box-shadow: 0px 6px 10px 2px rgba(0,0,0,0.2);
     border-radius: 5px;
@@ -165,7 +184,8 @@
   box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.5);
   margin: 5px auto;
   padding: 5px 10px;
-
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .tabPanel{
@@ -177,12 +197,13 @@
 .content_panel{
     align-items: center;
     justify-content: center;
+    overflow-y: scroll;
 }
 
 .content_panel .contents{
     align-content: center;
     align-items: center;
-    overflow-y: scroll;
+  
 }
 .contents{
     display: grid;
@@ -207,14 +228,15 @@
 }
 
 .desc_cont{
-    display: block;
+    display: inline-block;
+
 }
 
 .desc_cont span{
   font-weight: 600;
   letter-spacing: 1px;
   line-height: 1.2;
-  
+  font-size: 15px;
 }
 
 .desc_cont .description_list {
@@ -223,15 +245,22 @@
 }
 
   /*tabs listagem*/
-  
+
   .tablePanel thead tr th{
     color: rgb(153, 0, 255);
+    box-shadow: 0px 11px 15px -3px rgba(0,0,0,0.1);
     font-weight: 300;
-    height: 10px;
-    background: #fff;
-    border-bottom: 1px solid rgb(153, 140, 140);
+    height: 50px;
+    width: 45vh;
     border-collapse: collapse;
     white-space: nowrap;
+    text-align: left;
+  }
+
+  .tablePanel thead tr {
+    position: sticky;
+    background: #fff;
+    margin-top: 0;
   }
 
   .tablePanel tbody tr{
@@ -252,7 +281,7 @@
 .products_title{
   margin-top: 5px;
   margin: auto;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
   color: rgba(188, 74, 223, 0.7);
 }
@@ -267,8 +296,8 @@
 
 .product_card{
     border: 1px solid rgba(180, 177, 177, 0.5);
-    height: 22vh;
-    width: 20vh;
+    height: 23vh;
+    width: 23vh;
     margin: 10px;
     border-radius: 5px;
     display: flex;

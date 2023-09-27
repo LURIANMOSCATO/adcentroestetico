@@ -1,133 +1,19 @@
 *::-webkit-scrollbar {
-  width: 1px;
+  width: 5px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #ffffff00;
+  background: #968d8d00;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: none;
-  border-radius: 1px;
-  border: 1px solid #ffffff00;
+  background-color: rgba(189, 189, 189, 0.4);
+  border-radius: 3px;
+  border: none;
 }
 *{
   font-family: 'Josefin Sans', sans-serif;
   text-decoration: none;
   margin: 0 auto;
   padding: 0;
-}
-
-:root {
-  --icon-color: rgb(184, 2, 184);
-  --bg-color: rgba(128, 0, 128, 0.1);
-  --border-radius: 0.5vh;
-
-}
-
-.container{
-  display: flex;
-}
-
-main {
-  width: 100%;
-  padding: 20px;  
-}
-
-.sidebar {
-  background: #fff;
-  color: #2a2929;
-  height: 100vh;
-  width: 200px;
-  z-index: 1;
-  position: fixed;
-  transition: all 0.2s;
-  box-shadow: 0px 0px 8px 4px rgba(0,0,0,0.1);
-  border-right: 1px solid #a7a6a646;
-}
-
-.sidebar_mobile {
-  display: none;
-}
-
-.top_section {
-  display: flex;
-  align-items: center;
-  padding: 20px 15px;
-  border-bottom: 1px solid rgb(233, 193, 243);
-  margin: 5px;
-}
-
-.logo {
-  font-size: 35px;
-  color: rgb(230, 166, 247);
-  display: grid;
-  flex-flow: column;
-}
-
-.bars{
-  display: flex;
-  font-size: 30px;
-  margin-left: 50px;
-  cursor: pointer;
-  color: #000;
-}
-
-.bars svg:hover{
-  color: var(--icon-color);
-  cursor: pointer;
-}
-
-.link {
-  display: flex;
-  padding: 5px 15px;
-  gap: 10px;
-  font-weight: 300;
-  color: rgb(176, 97, 228);
-}
-
-.link:hover{
-  background: rgb(232, 214, 233);
-  border-radius: var(--border-radius);
-  margin: 5px;
-}
-
-
-
-.active {
-  color: var(--icon-color);
-  background: var(--bg-color);
-  border-radius: var(--border-radius);
-  margin-top: 5px;
-  font-weight: 600;
-  margin: 5px;
-}
-
-.active .link_text {
-  font-size: 17px;
-  margin-top: 10px;
-  font-weight: 400;
-  text-align: left;
-}
-
-.link_text {
-  width: 15vh;
-  text-align: left;
-}
-
-.active svg {
-  color: var(--icon-color);
-  font-size: 25px;
-  margin-left: 0;
-  margin-top: 3px;
-  padding: 1px 0px;
-}
-
-.icon, .link_text  {
-  font-size: 20px;
-  text-transform: capitalize;
-}
-
-@media only screen and (max-width: 820px){
-  
 }

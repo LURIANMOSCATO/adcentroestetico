@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, Fragment} from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Combobox  } from '@headlessui/react';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './Form.module.css'
-import {FaSave} from 'react-icons/fa'
 
 
 function ViewEdit() {
@@ -19,7 +19,6 @@ function ViewEdit() {
     }
 
     const {id} = useParams();
-    const navigate = useNavigate();
 
 
     const [genter, setGenter] = useState([]);
@@ -30,31 +29,35 @@ function ViewEdit() {
         telefone: '',
         profissional: '',
         servico: '',
-        datanasc: '',
-        dataatend: '',
+        dataNascimento: '',
+        dataServico: '',
         hora: '',
         tempo: '',
+        pagamento: '',
         valor: '',
         gestante: '',
         alergica: '',
         alergia: ''
     });
 
+
     useEffect(() =>{
+
         axios.get('http://localhost:8081/view/'+id)
         .then(res => {
-            const dataNascimento = res.data[0].dataNascimento.split('T')[0];
+            /*const dataNascimento = res.data[0].dataNascimento.split('T')[0];
             const dataServico = res.data[0].dataServico.split('T')[0];
-
+            */
             setValues({...values, 
             cliente: res.data[0].cliente,
             telefone: res.data[0].telefone,
             profissional: res.data[0].profissional,
             servico: res.data[0].servico,
-            datanasc:  dataNascimento,
-            dataatend: dataServico,
+            datanasc:  res.data[0].dataNascimento,
+            dataatend: res.data[0].dataServico,
             hora: res.data[0].hora,
             tempo: res.data[0].tempo,
+            pagamento: res.data[0].pagamento,
             valor: res.data[0].valor,
             gestante: res.data[0].gestante,
             alergica: res.data[0].alergica,
@@ -63,6 +66,33 @@ function ViewEdit() {
         })
         .catch(err => alert('falha!'));
     }, [id])
+
+
+    const [servico, setServico] = useState([]);
+
+    const [auth, setAuth] = useState(false);
+    const navigate = useNavigate();
+    const [message, setMessage] = useState([]);
+    const [name, setName] = useState([]);
+    axios.defaults.withCredentials = true;
+
+    useEffect(()=>{
+        axios.get('http://localhost:8081/servicos')
+        .then(res => setServico(res.data))
+        .catch(err => console.log(err));
+
+        axios.get('http://localhost:8081/verify')
+        .then(res => {
+            if(res.data.Status === "Success") {
+              setAuth(true)
+              setName(res.data.name)
+            } else {
+              setAuth(false)
+              setMessage(res.data.Error);
+              navigate('/login');
+            }
+        })
+      }, [])
 
     const handleUpdate = (event) =>{
         event.preventDefault();
@@ -86,7 +116,7 @@ function ViewEdit() {
     }
 
   return (
-    <div className={styles.container}>
+    <div className="p-5 min-h-screen bg-gray-100 items-center">
         <ToastContainer
         position="top-right"
         autoClose={2000}
@@ -98,14 +128,14 @@ function ViewEdit() {
         draggable
         theme="light"
         />
-        <form onSubmit={handleUpdate} className={styles.editview}>
+        <form onSubmit={handleUpdate} className='w-[30rem] h-[32rem] bg-white rounded-md shadow-md'>
         <Link to={'/agenda'}>
-        <button className={styles.button_back}>Voltar</button>
+        <button className="ml-2 text-red-500 mt-1">Voltar</button>
         </Link>
-            <h1 className={styles.titleview}>Visualize ou Edite</h1>
+            <h1 className="text-center h-5 font-bold text-xl">Visualize ou Edite</h1>
             
             
-            <div className={styles.user_details}>
+            <div className="w-[80%] items-center overflow-scroll h-[25rem]">
 
                 <label htmlFor=''>Cliente</label>
 
@@ -146,26 +176,28 @@ function ViewEdit() {
                 onChange={e => setValues({...values, servico: e.target.value})}
                 >
                         <option>---</option>
-                        <option>Manutenção</option>
-                        <option>Corte de Cabelo</option>
-                        <option>Pintura</option>
+                        {servico.map((servico) => (
+                        <option key={servico.id} value={servico.nome}>
+                        {servico.tituloServico}
+                         </option>
+                        ))}
                     </select>
                 </div>
 
                 <label htmlFor=''>Data Nascimento</label>
                 <div className={styles.box}>
                 <input type="date" className={styles.input_field}
-                value={values.datanasc}
-                onChange={e => setValues({...values, datanasc: e.target.value})}
+                value={values.dataNascimento}
+                onChange={e => setValues({...values, dataNascimento: e.target.value})}
                 />
                 </div>
 
                 <label htmlFor=''>Data Atendimento</label>
                 <div className={styles.box}>
                 <input type="date" className={styles.input_field}
-                value={values.dataatend}
+                value={values.dataServico}
                 min={getCurrentDate()}
-                onChange={e => setValues({...values, dataatend: e.target.value})}
+                onChange={e => setValues({...values, dataServico: e.target.value})}
                 />
                 
 
@@ -187,7 +219,19 @@ function ViewEdit() {
                 value={values.tempo}
                 onChange={e => setValues({...values, tempo: e.target.value})}
                 />
-
+                </div>
+                <label htmlFor=''>Forma de pagamento:</label>
+                <div className={styles.box}>
+                <select placeholder='Escolha o Serviço'
+                value={values.pagamento}
+                onChange={e => setValues({...values, pagamento: e.target.value})}
+                >
+                        <option>---</option>
+                        <option>Pix</option>
+                        <option>Dinheiro</option>
+                        <option>Crédito</option>
+                        <option>Débito</option>
+                    </select>
                 </div>
                 <label htmlFor=''>Valor</label>
                 <div className={styles.box}>
@@ -263,8 +307,10 @@ function ViewEdit() {
                 </div>
                 
             </div>
-            <div className={styles.buttonview}>
-            <button className={styles.button_action}>Atualizar </button>
+            
+            <div className="w-4/5 items-center justify-center shadow-md">
+            <button className="w-full bottom-2 rounded tracking-wider shadow-md
+            bg-gray-900 p-2 text-white">Atualizar</button>
             </div>
         </form>
     </div>

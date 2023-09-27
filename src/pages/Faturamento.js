@@ -1,25 +1,43 @@
 import React, {useEffect, useState} from 'react'
+import { useNavigate } from 'react-router'
 import axios from 'axios'
-
 import styles from './Faturamento.module.css'
 import {IoCart} from 'react-icons/io5'
 import {HiOutlineShoppingBag, HiOutlineCake} from 'react-icons/hi2'
 import {BsClipboardCheck, BsCashCoin} from 'react-icons/bs'
-import {LiaShoppingBagSolid, LiaCartArrowDownSolid, LiaFileInvoiceDollarSolid} from 'react-icons/lia'
-
+import { LiaCartArrowDownSolid, LiaFileInvoiceDollarSolid} from 'react-icons/lia'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 function Faturamento() {
 
   const [services, setServices] = useState([]);
+
   const [faturatendimento, setFaturatendimento] = useState([]);
+  const [faturatendimentos, setFaturatendimentos] = useState([]);
+  const [faturatendimentod, setFaturatendimentod] = useState([]);
+
+  const [pix, setPix] = useState([]);
+  const [dinheiro, setDinheiro] = useState([]);
+  const [credito, setCredito] = useState([]);
+  const [debito, setDebito] = useState([]);
+
   const [prod, setProd] = useState([]);
   const [register, setRegister] = useState([]);
   const [totalv, setTotalv] = useState([]);
+  const [totald, setTotald] = useState([]);
+  const [totalw, setTotalw] = useState([]);
 
   const [tabIndex, setTabIndex] = useState(0);
 
+  const [auth, setAuth] = useState(false);
+  const navigate = useNavigate();
+  const [message, setMessage] = useState([]);
+  const [name, setName] = useState([]);
+  axios.defaults.withCredentials = true;
+
   useEffect(() => {
+
+
     axios.get('http://localhost:8081/servicosrealizados')
       .then(res => setServices(res.data))
       .catch(err => console.log(err));
@@ -27,6 +45,35 @@ function Faturamento() {
       axios.get('http://localhost:8081/faturatendimentos')
       .then(res => {
         setFaturatendimento(res.data[0].valor)
+      }).catch(err => console.log(err));
+      axios.get('http://localhost:8081/faturatendimentosemana')
+      .then(res => {
+        setFaturatendimentos(res.data[0].valor)
+      }).catch(err => console.log(err));
+      axios.get('http://localhost:8081/faturatendimentosdia')
+      .then(res => {
+        setFaturatendimentod(res.data[0].valor)
+      }).catch(err => console.log(err));
+
+      axios.get('http://localhost:8081/pix')
+      .then(res => {
+        setPix(res.data[0].valor)
+      }).catch(err => console.log(err));
+
+
+      axios.get('http://localhost:8081/dinheiro')
+      .then(res => {
+        setDinheiro(res.data[0].valor)
+      }).catch(err => console.log(err));
+
+      axios.get('http://localhost:8081/credito')
+      .then(res => {
+        setCredito(res.data[0].valor)
+      }).catch(err => console.log(err));
+
+      axios.get('http://localhost:8081/debito')
+      .then(res => {
+        setDebito(res.data[0].valor)
       }).catch(err => console.log(err));
 
       axios.get('http://localhost:8081/vendasrealizadas')
@@ -43,7 +90,29 @@ function Faturamento() {
       .then(res => {
         setTotalv(res.data[0].total)
       }).catch(err => console.log(err));
-  })
+
+      axios.get('http://localhost:8081/vendastotald')
+      .then(res => {
+        setTotald(res.data[0].total)
+      }).catch(err => console.log(err));
+
+      axios.get('http://localhost:8081/vendastotalw')
+      .then(res => {
+        setTotalw(res.data[0].total)
+      }).catch(err => console.log(err));
+
+      axios.get('http://localhost:8081/verify')
+        .then(res => {
+            if(res.data.Status === "Success") {
+              setAuth(true)
+              setName(res.data.name)
+            } else {
+              setAuth(false)
+              setMessage(res.data.Error);
+              navigate('/login');
+            }
+        })
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -54,7 +123,7 @@ function Faturamento() {
 
       <div className={styles.content}>
 
-        <h1 className={styles.title}>Faturamento vendas
+        <h1 className={styles.title}>Faturamento vendas Mês
         <IoCart/>
         </h1>
         
@@ -66,19 +135,14 @@ function Faturamento() {
         <div className={styles.days_count}>
 
           <div className={styles.days_val}>
-
-          <p>Mês:</p> 
-          <span>200,00</span>
+          <p>Dia:</p> 
+          <span>{totald}</span>
           </div>
           
           <div className={styles.days_val}>
-
-          <p>Semana:</p> 
-          <span>200,00</span>
+          <p>Sem:</p>
+          <span>{totalw}</span>
           </div>
-
-        
-          
           
         </div>
 
@@ -93,7 +157,6 @@ function Faturamento() {
         <BsCashCoin/>
         </h1>
         
-
         <div className={styles.values_money}>
           <span>{faturatendimento}</span>
         </div>
@@ -101,23 +164,46 @@ function Faturamento() {
 
           <div className={styles.days_val}>
 
-          <p>Semana:</p> 
-          <span>200,00</span>
+          <p>Sem:</p> 
+          <span>{faturatendimentos}</span>
           </div>
           
           <div className={styles.days_val}>
 
-          <p>Mês:</p> 
-          <span>200,00</span>
+          <p>Dia:</p> 
+          <span>{faturatendimentod}</span>
           </div>
 
+          <div className={styles.days_val}>
+
+          <p>Pix:</p>
+          <span>{pix}</span>
+          </div>
+
+          <div className={styles.days_val}>
+
+          <p>Créd:</p> 
+          <span>{credito}</span>
+          </div>
         
+          <div className={styles.days_val}>
+
+          <p>Débt:</p> 
+          <span>{debito}</span>
+          </div>
+
+          <div className={styles.days_val}>
+
+          <p>Din:</p> 
+          <span>{dinheiro}</span>
+          </div>
           
           
         </div>
 
         </div>
       </div>
+      
 
     </div>
 
@@ -203,19 +289,19 @@ function Faturamento() {
 
       </TabList>
 
-      <TabPanel className={styles.tabPanel}>
+      <TabPanel className="h-full overflow-auto">
 
-    <div className={styles.content_panel}>
+    <div className="h-full overflow-auto">
 
       <div className={styles.cards2}>
         <div className={styles.list}>
-          <table className={styles.tablePanel}>
+          <table className="w-full">
             <thead>
               <tr>
                 <th>Cliente</th>
                 <th>profissional</th>
                 <th>Valor</th>
-                <th>Data Nascimento</th>
+                <th>Concluído</th>
               </tr>
             </thead>
             <tbody>
@@ -223,8 +309,10 @@ function Faturamento() {
                     <tr key={item.id}>
                         <td>{item.cliente}</td>
                         <td>{item.profissional}</td>
-                        <td>{item.valor}</td>
-                        <td>{item.dtNascimento}</td>
+                        <td>{item.valor}
+                        <p>{item.pagamento}</p>
+                        </td>
+                        <td>{item.dtCheck}</td>
                     </tr>
             ))}
             </tbody>
@@ -252,7 +340,6 @@ function Faturamento() {
         <div className={styles.register_sell}>
           <p>venda:<br/> {product.datatime}</p>
           </div>
-        <h1 className={styles.products_title}><LiaShoppingBagSolid/> {product.titulo}</h1>
 
         <p className={styles.qtd}><LiaCartArrowDownSolid/> Qtd: {product.quantidade}</p>
 
@@ -275,7 +362,7 @@ function Faturamento() {
 
 <div className={styles.cards2}>
   <div className={styles.list}>
-    <table className={styles.tablePanel}>
+    <table className="w-full">
       <thead>
         <tr>
           <th>ID da Venda</th>
@@ -299,22 +386,10 @@ function Faturamento() {
 
 </div>
 </TabPanel>
-  <TabPanel className={styles.tabPanel}>Cadastro de Serviços</TabPanel>
+  <TabPanel className={styles.tabPanel}>Aniversariantes do dia</TabPanel>
   
     </Tabs>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
   )
 }

@@ -1,23 +1,30 @@
 import React, { useEffect, useState } from 'react'
-import {useNavigate} from 'react-router'
-import styles from './Home.module.css'
 import { BsCalendar4Week, BsCalendar3} from 'react-icons/bs'
 import {WiDayCloudy} from 'react-icons/wi'
-import {MdLogout} from 'react-icons/md'
-import {AiOutlineScissor} from 'react-icons/ai'
-import {GiEyelashes} from 'react-icons/gi'
-
+import {RxScissors} from 'react-icons/rx'
+import {GiEyelashes, GiExitDoor} from 'react-icons/gi'
 import axios from 'axios'; 
+import Modal from 'react-modal';
+import { useNavigate } from 'react-router'
+
+Modal.setAppElement("#root");
 
 function Home() {
 
   const [day, setDay] = useState([]);
   const [week, setWeek] = useState([]);
   const [month, setMonth] = useState([]);
+  const [deza, setDeza] = useState([]);
+  const [daia, setDaia] = useState([]);
+
+  const [auth, setAuth] = useState(false);
+  const navigate = useNavigate();
+  const [message, setMessage] = useState([]);
+  const [name, setName] = useState([]);
+  axios.defaults.withCredentials = true;
 
 
-  useEffect(() =>{
-
+  useEffect(() =>{    
     axios.get('http://localhost:8081/clientsday')
     .then(res =>{
       setDay(res.data[0].id)
@@ -33,100 +40,144 @@ function Home() {
         setMonth(res.data[0].id)
       }).catch(err =>console.log(err));
 
-  })
+      axios.get('http://localhost:8081/clientsdaia')
+      .then(res =>{
+        setDaia(res.data[0].id)
+      }).catch(err =>console.log(err));
+
+      axios.get('http://localhost:8081/clientsdeza')
+      .then(res =>{
+        setDeza(res.data[0].id)
+      }).catch(err =>console.log(err));
+
+      axios.get('http://localhost:8081/verify')
+      .then(res => {
+          if(res.data.Status === "Success") {
+            setAuth(true)
+            setName(res.data.name)
+          } else {
+            setAuth(false)
+            setMessage(res.data.Error);
+            navigate('/login');
+
+          }
+      })
+  }, [])
+
+  const handleLogout = () => {
+    axios.get(' http://localhost:8081/logout')
+    .then(res => {
+        window.location.reload(true);
+    }).catch(err => console.log(err));
+}
+
+  
 
   return (
-    <div className={styles.container}>
-    
-    <div className={styles.cards}>
+  
+    <div className="p-5 min-h-screen bg-gray-100">
+      {
+        auth ?
+      
+    <div className='h-[32rem] md:w-[65rem] overflow-auto grid grid-cols-1 top-5 mr-3
+    sm:w-full sm:h-42 sm:mr-0 sm:top-5 sm:grid-cols-2 gap-3 '>
+          <button
+      onClick={handleLogout}
+      className="float-right h-11 w-22 shadow-md rounded-sm fixed bottom-16 md:hidden
+      right-2 text-center text-gray-800 border-gray-300 border
+    bg-white p-1.5 font-normal outline-none bg-white-600 cursor-pointer"
+      ><p className='text-sm capitalize inline'>Sair</p> <GiExitDoor className='inline text-xl'/></button>
 
-      <div className={styles.values}>
+      
+      
+      <div className="w-full bg-white rounded-md border-l-8 border-red-500 shadow">
+      
+      <div className="grid top-px">
 
-      <div className={styles.content}>
-
-        <h1 className={styles.title}>dia
-        <WiDayCloudy/>
+        <h1 className="flot-left text-xl font-light ml-2 top-4 capitalize">dia
+        <WiDayCloudy className='inline float-right mr-5  text-4xl text-yellow-500'/>
         </h1>
-        
-
-        <div className={styles.values_money}>
+        <div className="text-4xl text-gray-500">
           <span>{day}</span>
-        </div>
-
-        <div>
-          detalhes
+          
         </div>
 
         </div>
       </div>
 
-      <div className={styles.values}>
+      <div className="w-full bg-white rounded-md border-l-8 border-red-500 shadow">
 
-      <div className={styles.content}>
+      <div className="grid top-px">
 
-        <h1 className={styles.title}>Semana
-        <BsCalendar4Week/>
+        <h1 className="flot-left text-xl font-light ml-2 top-4 capitalize">Semana
+        <BsCalendar4Week className='inline float-right mr-5 top-5 text-4xl text-yellow-500'/>
         </h1>
         
 
-        <div className={styles.values_money}>
+        <div className="text-4xl text-gray-500">
           <span>{week}</span>
         </div>
 
         </div>
       </div>
 
-      <div className={styles.values}>
+      <div className="w-full bg-white rounded-md border-l-8 border-red-500 shadow">
 
-      <div className={styles.content}>
+      <div className="grid top-px">
 
-        <h1 className={styles.title}>Mês
-        <BsCalendar3/>
+        <h1 className="flot-left text-xl font-light ml-2 top-4 capitalize">Mês
+        <BsCalendar3   className='inline float-right mr-5 top-5 text-4xl text-yellow-500'/>
         </h1>
         
 
-        <div className={styles.values_money}>
+        <div className="text-4xl text-gray-500">
           <span>{month}</span>
         </div>
 
         </div>
       </div>
 
+      <div className="w-full bg-white rounded-md border-l-8 border-purple-500 shadow">
 
-      </div>
-      
-      <div className={styles.cardspro}>
-      <div className={styles.values}>
+<div className="grid top-px">
 
-      <div className={styles.content}>
+  <h1 className="flot-left text-xl font-light ml-2 top-4 capitalize">Andreza
+  <GiEyelashes  className='inline float-right mr-5 top-5 text-4xl text-purple-500'/>
+  </h1>
+  
 
-        <h1 className={styles.title}>Andreza
-        <GiEyelashes/>
+  <div className="text-4xl text-gray-500">
+    <span>{deza}</span>
+  </div>
+
+  </div>
+</div>
+
+<div className="w-full bg-white rounded-md border-l-8 border-green-600 shadow">
+
+      <div className="grid top-px">
+
+        <h1 className="flot-left text-xl font-light ml-2 top-4 capitalize">Daiane
+        <RxScissors className='inline float-right mr-5 top-5 text-4xl text-green-600'/>
         </h1>
         
 
-        <div className={styles.values_money}>
-          <span>{day}</span>
-        </div>
-
-        </div>
-      </div>
-      <div className={styles.values}>
-
-      <div className={styles.content}>
-
-        <h1 className={styles.title}>Daiane
-        <AiOutlineScissor/>
-        </h1>
-        
-
-        <div className={styles.values_money}>
-          <span>{day}</span>
+        <div className="text-4xl text-gray-500">
+          <span>{daia}</span>
         </div>
 
         </div>
       </div> 
+
       </div>
+        :
+        <div className='grid items-center justify-center min-h-screen bg-blue-300'>   
+          <p>{message}</p>
+          
+          
+        </div>
+      }
+      
     </div>
   )
 }
