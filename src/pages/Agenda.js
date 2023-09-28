@@ -199,7 +199,7 @@ function closeModalTwo() {
     onChange={(e) => setStartDate(e.target.value)}
     className="w-[5rem]"
 />
-<span className='mt-2'>Final</span>
+<span className='mt-2'>Fim</span>
 <input
     type="date"
     placeholder="Data final"
