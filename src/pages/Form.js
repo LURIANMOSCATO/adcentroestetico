@@ -14,7 +14,7 @@ function Form() {
     const [servico, setServico] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:8081/servicos')
+        axios.get('http://node147829-login-adce.jelastic.saveincloud.net/servicos')
         .then(res => setServico(res.data))
         .catch(err => console.log(err));
     }, [])
@@ -51,7 +51,7 @@ function Form() {
             return;
         }
 
-        axios.post('http://localhost:8081/record_client', values)
+        axios.post('http://node147829-login-adce.jelastic.saveincloud.net/record_client', values)
         .then(res => {
             if(res.status===200) {
             console.log(res);

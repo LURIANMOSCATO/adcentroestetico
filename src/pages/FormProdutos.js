@@ -15,7 +15,7 @@ function FormProdutos() {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        axios.post('http://localhost:8081/register_product', values)
+        axios.post('http://node147829-login-adce.jelastic.saveincloud.net/register_product', values)
         .then(res => {
             if(res.status===200) {
             console.log(res);

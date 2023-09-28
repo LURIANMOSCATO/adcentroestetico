@@ -49,7 +49,7 @@ const Sidebar = ({children}) =>  {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        axios.get(' http://localhost:8081/logout')
+        axios.get('http://node147829-login-adce.jelastic.saveincloud.net/logout')
         .then(res => {
             window.location.reload(true);
         }).catch(err => console.log(err));

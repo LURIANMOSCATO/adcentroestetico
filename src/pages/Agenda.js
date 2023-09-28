@@ -70,11 +70,11 @@ function closeModalTwo() {
 
     useEffect(()=>{
 
-      axios.get('http://localhost:8081/')
+      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/')
       .then(res => setData(res.data))
       .catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/verify')
+      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/verify')
       .then(res => {
           if(res.data.Status === "Success") {
             setAuth(true)
@@ -89,7 +89,7 @@ function closeModalTwo() {
 
     const handleSearchByPeriod = () => {
       // Realize uma chamada à API passando as datas de início e fim como parâmetros
-      axios.get(`http://localhost:8081/search?startDate=${startDate}&endDate=${endDate}`)
+      axios.get(`http://node147829-login-adce.jelastic.saveincloud.net/search?startDate=${startDate}&endDate=${endDate}`)
           .then((res) => {
               setData(res.data); // Atualize os dados filtrados na tabela
           })
@@ -99,7 +99,7 @@ function closeModalTwo() {
   };
   
     const handleCheck = (id) => {
-    axios.post('http://localhost:8081/check/'+id)
+    axios.post('http://node147829-login-adce.jelastic.saveincloud.net/check/'+id)
       .then(res => {
           if(res.status===200)
       {
@@ -118,7 +118,7 @@ function closeModalTwo() {
       }, )
       .catch(err => console.log(err));
 
-    axios.delete('http://localhost:8081/delete/'+id)
+    axios.delete('http://node147829-login-adce.jelastic.saveincloud.net/delete/'+id)
       .then(res => {
         setTimeout(()=>{
           window.location.reload();
@@ -128,7 +128,7 @@ function closeModalTwo() {
   }
 
   const handleCancel = (id) => {
-    axios.delete('http://localhost:8081/cancel/'+id)
+    axios.delete('http://node147829-login-adce.jelastic.saveincloud.net/cancel/'+id)
     .then(res => {
       if(res.status===200) {
         toast.info('Agendamento Cancelado!', {

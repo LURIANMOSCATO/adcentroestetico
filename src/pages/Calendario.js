@@ -13,7 +13,7 @@ function Calendario() {
 
     useEffect(() => {
         // Faça a chamada à API Node.js para buscar os eventos
-        axios.get(`http://localhost:8081/agendas`)
+        axios.get(`http://node147829-login-adce.jelastic.saveincloud.net/agendas`)
           .then((response) => {
                 console.log('Eventos recebidos da API:', response.data);
                 setEventos(response.data);

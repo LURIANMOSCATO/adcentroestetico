@@ -77,7 +77,7 @@ function closeModa2l() {
     },[])
 
     const handleDeleteProduct = (id) => {
-      axios.delete('http://localhost:8081/deletepdt/'+id)
+      axios.delete('http://node147829-login-adce.jelastic.saveincloud.net/deletepdt/'+id)
       .then(res => {
         if(res.status===200) {
           toast.info('Produto Deletado da Loja!', {
@@ -97,7 +97,7 @@ function closeModa2l() {
 
 
     const handleDeleteServico = (id) => {
-      axios.delete('http://localhost:8081/deleteservico/'+id)
+      axios.delete('http://node147829-login-adce.jelastic.saveincloud.net/deleteservico/'+id)
       .then(res => {
         if(res.status===200) {
           toast.info('Serviço Excluído!', {

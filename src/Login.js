@@ -17,7 +17,7 @@ export default function Login() {
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8081/login', values)
+        axios.post('http://node147829-login-adce.jelastic.saveincloud.net/login', values)
         .then(res => {
             if(res.data.Status === "Success") {
                 navigate('/')

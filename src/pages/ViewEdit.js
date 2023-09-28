@@ -43,7 +43,7 @@ function ViewEdit() {
 
     useEffect(() =>{
 
-        axios.get('http://localhost:8081/view/'+id)
+        axios.get('http://node147829-login-adce.jelastic.saveincloud.net/view/'+id)
         .then(res => {
             /*const dataNascimento = res.data[0].dataNascimento.split('T')[0];
             const dataServico = res.data[0].dataServico.split('T')[0];
@@ -77,11 +77,11 @@ function ViewEdit() {
     axios.defaults.withCredentials = true;
 
     useEffect(()=>{
-        axios.get('http://localhost:8081/servicos')
+        axios.get('http://node147829-login-adce.jelastic.saveincloud.net/servicos')
         .then(res => setServico(res.data))
         .catch(err => console.log(err));
 
-        axios.get('http://localhost:8081/verify')
+        axios.get('http://node147829-login-adce.jelastic.saveincloud.net/verify')
         .then(res => {
             if(res.data.Status === "Success") {
               setAuth(true)
@@ -96,7 +96,7 @@ function ViewEdit() {
 
     const handleUpdate = (event) =>{
         event.preventDefault();
-        axios.put('http://localhost:8081/update/'+id, values)
+        axios.put('http://node147829-login-adce.jelastic.saveincloud.net/update/'+id, values)
         .then(res => {
             console.log(res)
             toast.success('Alteração Realizada!', {

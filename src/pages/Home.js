@@ -25,32 +25,32 @@ function Home() {
 
 
   useEffect(() =>{    
-    axios.get('http://localhost:8081/clientsday')
+    axios.get('http://node147829-login-adce.jelastic.saveincloud.net/clientsday')
     .then(res =>{
       setDay(res.data[0].id)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/clientsweek')
+      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/clientsweek')
       .then(res =>{
         setWeek(res.data[0].id)
       }).catch(err =>console.log(err));
 
-      axios.get('http://localhost:8081/clientsmonth')
+      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/clientsmonth')
       .then(res =>{
         setMonth(res.data[0].id)
       }).catch(err =>console.log(err));
 
-      axios.get('http://localhost:8081/clientsdaia')
+      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/clientsdaia')
       .then(res =>{
         setDaia(res.data[0].id)
       }).catch(err =>console.log(err));
 
-      axios.get('http://localhost:8081/clientsdeza')
+      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/clientsdeza')
       .then(res =>{
         setDeza(res.data[0].id)
       }).catch(err =>console.log(err));
 
-      axios.get('http://localhost:8081/verify')
+      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/verify')
       .then(res => {
           if(res.data.Status === "Success") {
             setAuth(true)
@@ -65,7 +65,7 @@ function Home() {
   }, [])
 
   const handleLogout = () => {
-    axios.get(' http://localhost:8081/logout')
+    axios.get(' http://node147829-login-adce.jelastic.saveincloud.net/logout')
     .then(res => {
         window.location.reload(true);
     }).catch(err => console.log(err));
