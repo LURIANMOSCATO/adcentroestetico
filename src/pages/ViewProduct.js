@@ -22,7 +22,7 @@ function ViewProduct() {
     });
 
     useEffect(() =>{
-      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/viewproduct/'+id)
+      axios.get('http://apis-backend.jelastic.saveincloud.net/viewproduct/'+id)
       .then(res => {
           setValues({...values, 
             tituloProduto: res.data[0].tituloProduto,
@@ -32,7 +32,7 @@ function ViewProduct() {
       })
       .catch(err => alert('falha ao resgatar valores!'));
 
-      axios.get('http://node147829-login-adce.jelastic.saveincloud.net/verify')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/verify')
         .then(res => {
             if(res.data.Status === "Success") {
               setAuth(true)
@@ -47,7 +47,7 @@ function ViewProduct() {
 
   const handleUpdate = (event) =>{
     event.preventDefault();
-    axios.put('http://node147829-login-adce.jelastic.saveincloud.net/updatep/'+id, values)
+    axios.put('http://apis-backend.jelastic.saveincloud.net/updatep/'+id, values)
     .then(res => {
         console.log(res)
         toast.success('Produto Atualizado!', {

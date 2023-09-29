@@ -54,15 +54,15 @@ function closeModa2l() {
 
     useEffect(() =>{
 
-      axios.get('http://localhost:8081/products')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/products')
       .then(res => setProducts(res.data))
       .catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/servicos')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/servicos')
       .then(res => setServicos(res.data))
       .catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/verify')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/verify')
       .then(res => {
           if(res.data.Status === "Success") {
             setAuth(true)
@@ -77,7 +77,7 @@ function closeModa2l() {
     },[])
 
     const handleDeleteProduct = (id) => {
-      axios.delete('http://node147829-login-adce.jelastic.saveincloud.net/deletepdt/'+id)
+      axios.delete('http://apis-backend.jelastic.saveincloud.net/deletepdt/'+id)
       .then(res => {
         if(res.status===200) {
           toast.info('Produto Deletado da Loja!', {
@@ -97,7 +97,7 @@ function closeModa2l() {
 
 
     const handleDeleteServico = (id) => {
-      axios.delete('http://node147829-login-adce.jelastic.saveincloud.net/deleteservico/'+id)
+      axios.delete('http://apis-backend.jelastic.saveincloud.net/deleteservico/'+id)
       .then(res => {
         if(res.status===200) {
           toast.info('Serviço Excluído!', {

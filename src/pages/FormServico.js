@@ -13,7 +13,7 @@ function FormServico() {
     const handleSubmit = (e) => {
 
         e.preventDefault();
-        axios.post('http://node147829-login-adce.jelastic.saveincloud.net/register_servico', values)
+        axios.post('http://apis-backend.jelastic.saveincloud.net/register_servico', values)
         .then(res => {
             if(res.status===200) {
             console.log(res);

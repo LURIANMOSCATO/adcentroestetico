@@ -40,14 +40,14 @@ function Caixa() {
   useEffect(()=>{
 
     axios
-    .get('http://node147829-login-adce.jelastic.saveincloud.net/product_list')
+    .get('http://apis-backend.jelastic.saveincloud.net/product_list')
     .then((res) => {
       setData(res.data);
       setSelectedProducts([]); // Inicializa o estado com um array vazio aqui
     })
     .catch((err) => console.log(err));
 
-    axios.get('http://node147829-login-adce.jelastic.saveincloud.net/verify')
+    axios.get('http://apis-backend.jelastic.saveincloud.net/verify')
       .then(res => {
           if(res.data.Status === "Success") {
             setAuth(true)
@@ -139,7 +139,7 @@ function Caixa() {
     }
 
     // Faça uma requisição para o backend para finalizar a venda
-    axios.post('http://node147829-login-adce.jelastic.saveincloud.net/finalizar_venda', {
+    axios.post('http://apis-backend.jelastic.saveincloud.net/finalizar_venda', {
         produtos: productsData,
         total: totalVenda, // Total da venda com duas casas decimais
         // Outros dados da venda, se necessário

@@ -15,7 +15,7 @@ function Register() {
     axios.defaults.withCredentials = true;
 
     useEffect(() =>{
-        axios.get('http://node147829-login-adce.jelastic.saveincloud.net/verify')
+        axios.get('http://apis-backend.jelastic.saveincloud.net/verify')
         .then(res => {
             if(res.data.Status === "Success") {
               setAuth(true)
@@ -37,7 +37,7 @@ function Register() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://node147829-login-adce.jelastic.saveincloud.net/newuser', values)
+        axios.post('http://apis-backend.jelastic.saveincloud.net/newuser', values)
         .then(res => {
             if(res.data.Status === "Success") {
                 toast.info('Usuário Criado!', {

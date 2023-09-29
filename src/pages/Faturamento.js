@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+http://apis-backend.jelastic.saveincloud.net/import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import styles from './Faturamento.module.css'
@@ -38,70 +38,70 @@ function Faturamento() {
   useEffect(() => {
 
 
-    axios.get('http://localhost:8081/servicosrealizados')
+    axios.get('http://apis-backend.jelastic.saveincloud.net/servicosrealizados')
       .then(res => setServices(res.data))
       .catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/faturatendimentos')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/faturatendimentos')
       .then(res => {
         setFaturatendimento(res.data[0].valor)
       }).catch(err => console.log(err));
-      axios.get('http://localhost:8081/faturatendimentosemana')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/faturatendimentosemana')
       .then(res => {
         setFaturatendimentos(res.data[0].valor)
       }).catch(err => console.log(err));
-      axios.get('http://localhost:8081/faturatendimentosdia')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/faturatendimentosdia')
       .then(res => {
         setFaturatendimentod(res.data[0].valor)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/pix')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/pix')
       .then(res => {
         setPix(res.data[0].valor)
       }).catch(err => console.log(err));
 
 
-      axios.get('http://localhost:8081/dinheiro')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/dinheiro')
       .then(res => {
         setDinheiro(res.data[0].valor)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/credito')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/credito')
       .then(res => {
         setCredito(res.data[0].valor)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/debito')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/debito')
       .then(res => {
         setDebito(res.data[0].valor)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/vendasrealizadas')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/vendasrealizadas')
       .then(res => {
         setProd(res.data)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/vendasregister')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/vendasregister')
       .then(res => {
         setRegister(res.data)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/vendastotal')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/vendastotal')
       .then(res => {
         setTotalv(res.data[0].total)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/vendastotald')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/vendastotald')
       .then(res => {
         setTotald(res.data[0].total)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/vendastotalw')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/vendastotalw')
       .then(res => {
         setTotalw(res.data[0].total)
       }).catch(err => console.log(err));
 
-      axios.get('http://localhost:8081/verify')
+      axios.get('http://apis-backend.jelastic.saveincloud.net/verify')
         .then(res => {
             if(res.data.Status === "Success") {
               setAuth(true)
