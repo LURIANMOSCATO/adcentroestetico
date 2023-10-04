@@ -1,4 +1,3 @@
-http://apis-backend.jelastic.saveincloud.net/import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 import styles from './Faturamento.module.css'
